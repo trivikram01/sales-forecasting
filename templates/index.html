@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Forecaster</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        label { display: block; margin-top: 10px; }
+        input { margin-bottom: 10px; }
+        button { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Store Sales Prediction App</h1>
+    <form action="/predict" method="post">
+        
+        <label>Store Type (Select: S1, S2, S3, S4)</label>
+        <input type="text" name="Store_Type" required placeholder="e.g. S1">
+
+        <label>Location Type (Select: L1, L2, L3, L4, L5)</label>
+        <input type="text" name="Location_Type" required placeholder="e.g. L1">
+
+        <label>Region Code (Select: R1, R2, R3, R4)</label>
+        <input type="text" name="Region_Code" required placeholder="e.g. R1">
+
+        <label>Holiday (1 = Yes, 0 = No)</label>
+        <input type="number" name="Holiday" required placeholder="0">
+
+        <label>Discount (Yes or No)</label>
+        <input type="text" name="Discount" required placeholder="Yes">
+
+        <label>Date</label>
+        <input type="date" name="Date" required>
+
+        <br>
+        <button type="submit">Predict Sales</button>
+    </form>
+    
+    <h2 style="color: green;">{{ prediction_text }}</h2>
+</body>
+</html>
