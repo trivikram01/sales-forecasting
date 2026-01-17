@@ -3,38 +3,69 @@
 <head>
     <title>Sales Forecaster</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; }
-        label { display: block; margin-top: 10px; }
-        input { margin-bottom: 10px; }
-        button { margin-top: 20px; padding: 10px 20px; cursor: pointer; }
+        body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background-color: #CFADDB; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 400px; }
+        h2 { text-align: center; color: #333; }
+        label { font-weight: bold; display: block; margin-top: 15px; color: #555; }
+        input, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { width: 100%; background-color: #28a745; color: white; padding: 12px; margin-top: 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        button:hover { background-color: #218838; }
+        .result { margin-top: 20px; text-align: center; font-size: 18px; font-weight: bold; color: #007bff; }
     </style>
 </head>
 <body>
-    <h1>Store Sales Prediction App</h1>
+
+<div class="container">
+    <h2>🔮 Retail Sales Predictor</h2>
     <form action="/predict" method="post">
         
-        <label>Store Type (Select: S1, S2, S3, S4)</label>
-        <input type="text" name="Store_Type" required placeholder="e.g. S1">
+        <label>Store Type</label>
+        <select name="Store_Type" required>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+            <option value="S4">S4</option>
+        </select>
 
-        <label>Location Type (Select: L1, L2, L3, L4, L5)</label>
-        <input type="text" name="Location_Type" required placeholder="e.g. L1">
+        <label>Location Type</label>
+        <select name="Location_Type" required>
+            <option value="L1">L1</option>
+            <option value="L2">L2</option>
+            <option value="L3">L3</option>
+            <option value="L4">L4</option>
+            <option value="L5">L5</option>
+        </select>
 
-        <label>Region Code (Select: R1, R2, R3, R4)</label>
-        <input type="text" name="Region_Code" required placeholder="e.g. R1">
+        <label>Region Code</label>
+        <select name="Region_Code" required>
+            <option value="R1">R1</option>
+            <option value="R2">R2</option>
+            <option value="R3">R3</option>
+            <option value="R4">R4</option>
+        </select>
 
-        <label>Holiday (1 = Yes, 0 = No)</label>
-        <input type="number" name="Holiday" required placeholder="0">
+        <label>Holiday?</label>
+        <select name="Holiday" required>
+            <option value="0">No (Workday)</option>
+            <option value="1">Yes (Holiday)</option>
+        </select>
 
-        <label>Discount (Yes or No)</label>
-        <input type="text" name="Discount" required placeholder="Yes">
+        <label>Discount Offered?</label>
+        <select name="Discount" required>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+        </select>
 
-        <label>Date</label>
+        <label>Date to Forecast</label>
         <input type="date" name="Date" required>
 
-        <br>
         <button type="submit">Predict Sales</button>
     </form>
-    
-    <h2 style="color: green;">{{ prediction_text }}</h2>
+
+    <div class="result">
+        {{ prediction_text }}
+    </div>
+</div>
+
 </body>
 </html>
